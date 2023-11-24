@@ -13,6 +13,18 @@ This is how to run this app:
  - Enjoy the app!!!
 
  ---
+
+ # How To Login to This App
+
+ This is how to Login to this app:
+
+  - cd to FE-Express folder.
+
+  - Write in terminal npm install.
+
+  - Write in terminal npx nodemon index.js
+
+  - Now you can Login with username: ifabula and password: 123456 on App!!!
  
 
 ### List of Available Feature:
