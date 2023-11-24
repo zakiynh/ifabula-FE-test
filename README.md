@@ -1,8 +1,32 @@
-# React + Vite
+# How To Use This App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is how to run this app: 
+ 
+ - Clone this repo.
 
-Currently, two official plugins are available:
+ - Write in terminal npm install.
+ 
+ - Write in terminal npm run dev.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ - Login to account.
+
+ - Enjoy the app!!!
+
+ ---
+ 
+
+### List of Available Feature:
+
+ | Feature | Description |
+ | ---- | ---- | 
+ | Login | Login to your account(Fake) 
+ | Logout | Logout from your account(Clear Local Storage) 
+ | Quest1 | Json array of object with information 
+ | Quest2 | Edit the Data on Quest 1. 
+ | Quest3 | Data Table from API. 
+ | Quest4 | Data Table from API, showing 10 data only. 
+ | Quest5 | Function action to delete the data. 
+ | Quest6 | Function action to delete the key data. 
+ | Quest7 | Hashing string using sha256. 
+
+---
