@@ -8,6 +8,7 @@ import QuestFive from "./views/QuestFive";
 import QuestSix from "./views/QuestSix";
 import LoginPage from "./views/LoginPage";
 import QuestSeven from "./views/QuestSeven";
+import QuestEight from "./views/QuestEight";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/quest-five" element={<QuestFive />} />
           <Route path="/quest-six" element={<QuestSix />} />
           <Route path="/quest-seven" element={<QuestSeven />} />
+          <Route path="/quest-eight" element={<QuestEight />} />
         </Routes>
       </div>
     </>

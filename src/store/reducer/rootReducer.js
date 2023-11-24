@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import questReducer from './questReducer';
+import dataReducer from './questReducer';
 import hitEndReducer from './hitEndReducer';
 
 const rootReducer = combineReducers({
-    quest: questReducer,
+    data: dataReducer,
     hitEnd: hitEndReducer
 });
 

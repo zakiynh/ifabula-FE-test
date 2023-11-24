@@ -1,18 +1,30 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { redirect, useNavigate } from "react-router-dom";
+import { login } from "../store/actions/questAction";
+import swal from "../helpers/swal"
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  const handleLogin = (e) => {
+  const dispatch = useDispatch();
+  
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (username && password) {
-      localStorage.setItem("username", username);
-      navigate("/home");
+      const loginData = await dispatch(login({ user_id: username, password}));
+
+      if (loginData) {
+        localStorage.setItem("user_id", loginData.user_id);
+        localStorage.setItem("scope", loginData.scope);
+
+        navigate("/home");
+      } else {
+        swal("error", "401 - UNAUTHORIZED", "error");
+      }
     } else {
-      alert("Invalid username or password");
+      swal("error", "401 - UNAUTHORIZED", "error");
     }
   };
 

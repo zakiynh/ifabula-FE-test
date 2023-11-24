@@ -1,36 +1,58 @@
-import { QUESTION_ANSWERED } from "./actionType";
+import { GET_DATA, LOGIN } from "./actionType";
+const BASE_URL = "http://localhost:3000/users";
+import axios from "axios";
+import swal from "../../helpers/swal";
 
-const data = [
-    {
-        "id": 1,
-        "title": "Petualang Asal Indonesia",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Nulla facilisi. Sed euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Nulla facilisi."
-    },
-    {
-        "id": 2,
-        "title": "Petualang Asal Indonesia Serie 2",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Nulla facilisi. Sed euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Nulla facilisi."
-    },
-    {
-        "id": 3,
-        "title": "Petualang Asal Indonesia Serie 3",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Nulla facilisi. Sed euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae ultricies nisl nunc eu nisl. Nulla facilisi."
-    },
-];
-
-export const quest = () => {
-    return {
-        type: QUESTION_ANSWERED,
-        payload: data
-    }
+export function setData(data) {
+  return {
+    type: GET_DATA,
+    payload: data,
+  };
 }
 
-export function questionAnswered() {
-    return async dispatch => {
-        // const question = data.find(question => question.id === id);
+export function getData() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(BASE_URL);
+      dispatch({
+        type: GET_DATA,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+}
+
+export function login(user) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(BASE_URL + "/login", user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status >= 200 && response.status < 300) {
+        const loginData = response.data;
         dispatch({
-            type: QUESTION_ANSWERED,
-            payload: data
+          type: LOGIN,
+          payload: loginData,
         });
-    };
+        swal("success", "Welcome to the App!", "success");
+        return loginData; 
+      } else {
+        swal(
+          "error",
+          "401 - UNAUTHORIZED",
+          "error"
+        );
+        return null; 
+      }
+    } catch (error) {
+      console.error(error);
+      swal("error", "401 - UNAUTHORIZED", "error");
+      throw error; 
+    }
+  };
 }

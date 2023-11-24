@@ -26,6 +26,10 @@ a:hover {
   color: #023e8a;
 }
 
+.text-desc{
+  color: #0077b6;
+}
+
 .card-quest {
   background-color: #0077b6;
   width: 325px;

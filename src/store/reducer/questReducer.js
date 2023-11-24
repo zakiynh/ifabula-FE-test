@@ -1,12 +1,12 @@
-import { QUESTION_ANSWERED } from "../actions/actionType";
+import { GET_DATA } from "../actions/actionType";
 
 const initialState = {
-    question: {}
+    question: [],
 };
 
-export default function questReducer(state = initialState, action) {
+export default function dataReducer(state = initialState, action) {
     switch (action.type) {
-        case QUESTION_ANSWERED:
+        case GET_DATA:
             return {
                 ...state,
                 question: action.payload

@@ -75,6 +75,15 @@ function CardQuest() {
           <p className="mt-4">Hashing string using sha256.</p>
         </div>
       </Link>
+      <Link
+        to="/quest-eight"
+        className="max-w-sm cursor-pointer overflow-hidden shadow-2xl mt-10 ml-4 rounded-lg card-quest"
+      >
+        <div className="card-text">
+          <h1 className="">Quest 8</h1>
+          <p className="mt-4">Get Data From Express.</p>
+        </div>
+      </Link>
     </div>
   );
 }
